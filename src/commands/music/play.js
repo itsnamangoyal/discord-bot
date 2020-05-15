@@ -24,9 +24,9 @@ module.exports = class PlayCommand extends BaseCommand{
                             .setFooter('Music Results');
                         message.channel.send(embed);
                         try{
-                            const filter = m => (message.author.id === m.author.id) && (m.content >=1 && m.content <= tracks.length);
+                            const filter = m => (message.author.id === m.author.id) && (parseInt(m.content) >=1 && parseInt(m.content) <= tracks.length);
                             const response = await message.channel
-                                .awaitMessages(filter, {max: 1, time: 10000, errors:['time']});
+                                .awaitMessages(filter, {max: 1, time: 60000, errors:['time']});
                         
                             if(response){
                                 const entry= response.first().content;
